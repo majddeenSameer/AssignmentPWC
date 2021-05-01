@@ -1,0 +1,14 @@
+<input type="text" [(ngModel)]="innerValue" (ngModelChange)="onChange($event)" class="{{class}}" name="toDateOfBirth" [bsConfig]="innerBsConfig" [disabled]="disabled"
+       bsDatepicker
+       autocomplete="off"
+       [placement]="placement"
+       [triggers]="triggers"
+       [outsideClick]="outsideClick"
+       [container]="container"
+       [outsideEsc]="outsideEsc"
+       [isOpen]="isOpen"
+       [minDate]="minDate"
+       [maxDate]="maxDate"
+       (bsValueChange)="onBsValueChange($event)"
+       (onShown)="onBsShown($event)"
+       (onHidden)="onBsHidden($event)">

@@ -1,0 +1,114 @@
+<div class="card p-3 mx-5 mb-4 mt-2 gray-bg">
+  <form #userForm="ngForm">
+    <div class="row">
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>First Name</label>
+        <input [(ngModel)]="model.firstNameEn" name="firstNameEn" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.firstNameEn"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Last Name</label>
+        <input [(ngModel)]="model.lastNameEn" name="lastNameEn" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.lastNameEn"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Email Address</label>
+        <input [(ngModel)]="model.emailAddress" name="emailAddress" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.emailAddress"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Date Of Birth</label>
+        <datepicker-control [(ngModel)]="model.dateOfBirth"
+                            name="dateOfBirth"
+                            class="form-control form-control-sm"
+                            [hasTime]="false"></datepicker-control>
+        <control-validator [control]="userForm.form.controls.dateOfBirth"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Gender</label>
+        <lookup lookupFullUrl="Gender"
+                l10nTranslate
+                bindLabel="description"
+                name="gender"
+                [(ngModel)]="model.gender">
+        </lookup>
+        <control-validator [control]="userForm.form.controls.gender"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Country</label>
+        <lookup lookupFullUrl="Country"
+                l10nTranslate
+                bindLabel="description"
+                name="country"
+                [(ngModel)]="model.country">
+        </lookup>
+        <control-validator [control]="userForm.form.controls.country"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>City</label>
+        <input [(ngModel)]="model.city" name="city" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.city"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Street</label>
+        <input [(ngModel)]="model.street" name="street" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.street"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>User Type</label>
+        <lookup lookupFullUrl="UserType"
+                l10nTranslate
+                bindLabel="description"
+                name="UserType"
+                [(ngModel)]="model.userType">
+        </lookup>
+        <control-validator [control]="userForm.form.controls.UserType"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>Password</label>
+        <input [(ngModel)]="model.password" name="password" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.password"></control-validator>
+      </div>
+
+      <div class="form-group col-md-6 col-xl-4">
+        <label>ConfirmPassword</label>
+        <input [(ngModel)]="model.confirmPassword" name="confirmPassword" required
+               type="text"
+               autocomplete="off" class="form-control form-control-sm" />
+        <control-validator [control]="userForm.form.controls.confirmPassword"></control-validator>
+      </div>
+      <div class="col-md-12 mt-5">
+        <button class="btn btn-primary mr-3 float-right"
+                [disabled]="!userForm.valid"
+                (click)="save()">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+

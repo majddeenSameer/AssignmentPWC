@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ApplicationDto.cs" />
+    <Compile Remove="ApplicationRoleDto.cs" />
+    <Compile Remove="LoginCredentialsDto.cs" />
+    <Compile Remove="LoginResultDto.cs" />
+    <Compile Remove="RoleDto.cs" />
+    <Compile Remove="UserApplicationsDto.cs" />
+    <Compile Remove="UserdApplicationDto.cs" />
+    <Compile Remove="UserDto.cs" />
+    <Compile Remove="UserRoleDto.cs" />
+    <Compile Remove="UserRolesDto.cs" />
+    <Compile Remove="UsersFilterDto.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

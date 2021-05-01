@@ -1,0 +1,769 @@
+USE [pwcAssignment]
+GO
+ALTER TABLE [dbo].[UserApplication] DROP CONSTRAINT [FK_UserApplication_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[UserApplication] DROP CONSTRAINT [FK_UserApplication_Application_ApplicationId]
+GO
+ALTER TABLE [dbo].[NoAuthUser] DROP CONSTRAINT [FK_NoAuthUser_UserType_UserTypeId]
+GO
+ALTER TABLE [dbo].[NoAuthUser] DROP CONSTRAINT [FK_NoAuthUser_Gender_GenderId]
+GO
+ALTER TABLE [dbo].[NoAuthUser] DROP CONSTRAINT [FK_NoAuthUser_Country_CountryId]
+GO
+ALTER TABLE [dbo].[AspNetUserTokens] DROP CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]
+GO
+ALTER TABLE [dbo].[AspNetUserLogins] DROP CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserClaims] DROP CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetRoles] DROP CONSTRAINT [FK_AspNetRoles_Application_ApplicationId]
+GO
+ALTER TABLE [dbo].[AspNetRoleClaims] DROP CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
+GO
+ Object  Index [IX_UserApplication_UserId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_UserApplication_UserId] ON [dbo].[UserApplication]
+GO
+ Object  Index [IX_UserApplication_ApplicationId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_UserApplication_ApplicationId] ON [dbo].[UserApplication]
+GO
+ Object  Index [IX_NoAuthUser_UserTypeId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_NoAuthUser_UserTypeId] ON [dbo].[NoAuthUser]
+GO
+ Object  Index [IX_NoAuthUser_GenderId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_NoAuthUser_GenderId] ON [dbo].[NoAuthUser]
+GO
+ Object  Index [IX_NoAuthUser_CountryId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_NoAuthUser_CountryId] ON [dbo].[NoAuthUser]
+GO
+ Object  Index [UserNameIndex]    Script Date 512021 102507 PM 
+DROP INDEX [UserNameIndex] ON [dbo].[AspNetUsers]
+GO
+ Object  Index [EmailIndex]    Script Date 512021 102507 PM 
+DROP INDEX [EmailIndex] ON [dbo].[AspNetUsers]
+GO
+ Object  Index [IX_AspNetUserRoles_RoleId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_AspNetUserRoles_RoleId] ON [dbo].[AspNetUserRoles]
+GO
+ Object  Index [IX_AspNetUserLogins_UserId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_AspNetUserLogins_UserId] ON [dbo].[AspNetUserLogins]
+GO
+ Object  Index [IX_AspNetUserClaims_UserId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_AspNetUserClaims_UserId] ON [dbo].[AspNetUserClaims]
+GO
+ Object  Index [RoleNameIndex]    Script Date 512021 102507 PM 
+DROP INDEX [RoleNameIndex] ON [dbo].[AspNetRoles]
+GO
+ Object  Index [IX_AspNetRoles_ApplicationId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_AspNetRoles_ApplicationId] ON [dbo].[AspNetRoles]
+GO
+ Object  Index [IX_AspNetRoleClaims_RoleId]    Script Date 512021 102507 PM 
+DROP INDEX [IX_AspNetRoleClaims_RoleId] ON [dbo].[AspNetRoleClaims]
+GO
+ Object  Table [dbo].[UserType]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[UserType]') AND type in (N'U'))
+DROP TABLE [dbo].[UserType]
+GO
+ Object  Table [dbo].[UserStatus]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[UserStatus]') AND type in (N'U'))
+DROP TABLE [dbo].[UserStatus]
+GO
+ Object  Table [dbo].[UserApplication]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[UserApplication]') AND type in (N'U'))
+DROP TABLE [dbo].[UserApplication]
+GO
+ Object  Table [dbo].[RequestStatus]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RequestStatus]') AND type in (N'U'))
+DROP TABLE [dbo].[RequestStatus]
+GO
+ Object  Table [dbo].[NoAuthUser]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[NoAuthUser]') AND type in (N'U'))
+DROP TABLE [dbo].[NoAuthUser]
+GO
+ Object  Table [dbo].[Gender]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Gender]') AND type in (N'U'))
+DROP TABLE [dbo].[Gender]
+GO
+ Object  Table [dbo].[Country]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Country]') AND type in (N'U'))
+DROP TABLE [dbo].[Country]
+GO
+ Object  Table [dbo].[AspNetUserTokens]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetUserTokens]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetUserTokens]
+GO
+ Object  Table [dbo].[AspNetUsers]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetUsers]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetUsers]
+GO
+ Object  Table [dbo].[AspNetUserRoles]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetUserRoles]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetUserRoles]
+GO
+ Object  Table [dbo].[AspNetUserLogins]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetUserLogins]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetUserLogins]
+GO
+ Object  Table [dbo].[AspNetUserClaims]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetUserClaims]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetUserClaims]
+GO
+ Object  Table [dbo].[AspNetRoles]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetRoles]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetRoles]
+GO
+ Object  Table [dbo].[AspNetRoleClaims]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AspNetRoleClaims]') AND type in (N'U'))
+DROP TABLE [dbo].[AspNetRoleClaims]
+GO
+ Object  Table [dbo].[Application]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Application]') AND type in (N'U'))
+DROP TABLE [dbo].[Application]
+GO
+ Object  Table [dbo].[__EFMigrationsHistory]    Script Date 512021 102507 PM 
+IF  EXISTS (SELECT  FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[__EFMigrationsHistory]') AND type in (N'U'))
+DROP TABLE [dbo].[__EFMigrationsHistory]
+GO
+USE [master]
+GO
+ Object  Database [pwcAssignment]    Script Date 512021 102507 PM 
+DROP DATABASE [pwcAssignment]
+GO
+ Object  Database [pwcAssignment]    Script Date 512021 102507 PM 
+CREATE DATABASE [pwcAssignment]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'pwcAssignment', FILENAME = N'CProgram FilesMicrosoft SQL ServerMSSQL15.MSSQLSERVERMSSQLDATApwcAssignment.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'pwcAssignment_log', FILENAME = N'CProgram FilesMicrosoft SQL ServerMSSQL15.MSSQLSERVERMSSQLDATApwcAssignment_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [pwcAssignment] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [pwcAssignment].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [pwcAssignment] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [pwcAssignment] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [pwcAssignment] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [pwcAssignment] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [pwcAssignment] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [pwcAssignment] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET RECOVERY FULL 
+GO
+ALTER DATABASE [pwcAssignment] SET  MULTI_USER 
+GO
+ALTER DATABASE [pwcAssignment] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [pwcAssignment] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [pwcAssignment] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [pwcAssignment] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [pwcAssignment] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [pwcAssignment] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'pwcAssignment', N'ON'
+GO
+ALTER DATABASE [pwcAssignment] SET QUERY_STORE = OFF
+GO
+USE [pwcAssignment]
+GO
+ Object  Table [dbo].[__EFMigrationsHistory]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ Object  Table [dbo].[Application]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Application](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](max) NULL,
+	[NameAr] [nvarchar](max) NULL,
+	[NameEn] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Application] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetRoleClaims]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoleClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetRoles]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](450) NOT NULL,
+	[ApplicationId] [bigint] NOT NULL,
+	[Name] [nvarchar](256) NULL,
+	[NormalizedName] [nvarchar](256) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetUserClaims]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetUserLogins]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[ProviderKey] [nvarchar](450) NOT NULL,
+	[ProviderDisplayName] [nvarchar](max) NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetUserRoles]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](450) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetUsers]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUsers](
+	[Id] [nvarchar](450) NOT NULL,
+	[FirstNameEn] [nvarchar](max) NULL,
+	[LastNameEn] [nvarchar](max) NULL,
+	[EmailAddress] [nvarchar](max) NULL,
+	[Password] [nvarchar](max) NULL,
+	[IDN] [nvarchar](max) NULL,
+	[DateOfBirth] [datetime2](7) NULL,
+	[Gender] [bigint] NULL,
+	[Street] [nvarchar](max) NULL,
+	[City] [nvarchar](max) NULL,
+	[CreatedBy] [nvarchar](max) NULL,
+	[CreatedDate] [datetime2](7) NULL,
+	[ModifiedBy] [nvarchar](max) NULL,
+	[ModifiedDate] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[UserName] [nvarchar](256) NULL,
+	[NormalizedUserName] [nvarchar](256) NULL,
+	[Email] [nvarchar](256) NULL,
+	[NormalizedEmail] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEnd] [datetimeoffset](7) NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+ CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[AspNetUserTokens]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserTokens](
+	[UserId] [nvarchar](450) NOT NULL,
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](450) NOT NULL,
+	[Value] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[LoginProvider] ASC,
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[Country]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Country](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](max) NULL,
+	[DescriptionArabic] [nvarchar](max) NULL,
+	[DescriptionEnglish] [nvarchar](max) NULL,
+	[ValidFrom] [datetime2](7) NULL,
+	[ValidTo] [datetime2](7) NULL,
+ CONSTRAINT [PK_Country] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[Gender]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Gender](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](max) NULL,
+	[DescriptionArabic] [nvarchar](max) NULL,
+	[DescriptionEnglish] [nvarchar](max) NULL,
+	[ValidFrom] [datetime2](7) NULL,
+	[ValidTo] [datetime2](7) NULL,
+ CONSTRAINT [PK_Gender] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[NoAuthUser]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NoAuthUser](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[FirstNameEn] [nvarchar](max) NULL,
+	[LastNameEn] [nvarchar](max) NULL,
+	[EmailAddress] [nvarchar](max) NULL,
+	[Password] [nvarchar](max) NULL,
+	[DateOfBirth] [datetime2](7) NULL,
+	[GenderId] [bigint] NULL,
+	[Street] [nvarchar](max) NULL,
+	[City] [nvarchar](max) NULL,
+	[CountryId] [bigint] NULL,
+	[UserTypeId] [bigint] NULL,
+	[CreatedBy] [nvarchar](max) NULL,
+	[CreatedDate] [datetime2](7) NULL,
+	[ModifiedBy] [nvarchar](max) NULL,
+	[ModifiedDate] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK_NoAuthUser] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[RequestStatus]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RequestStatus](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](max) NULL,
+	[DescriptionArabic] [nvarchar](max) NULL,
+	[DescriptionEnglish] [nvarchar](max) NULL,
+	[ValidFrom] [datetime2](7) NULL,
+	[ValidTo] [datetime2](7) NULL,
+ CONSTRAINT [PK_RequestStatus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[UserApplication]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserApplication](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ApplicationId] [bigint] NOT NULL,
+	[UserId] [nvarchar](450) NULL,
+ CONSTRAINT [PK_UserApplication] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ Object  Table [dbo].[UserStatus]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserStatus](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](max) NULL,
+	[DescriptionArabic] [nvarchar](max) NULL,
+	[DescriptionEnglish] [nvarchar](max) NULL,
+	[ValidFrom] [datetime2](7) NULL,
+	[ValidTo] [datetime2](7) NULL,
+ CONSTRAINT [PK_UserStatus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ Object  Table [dbo].[UserType]    Script Date 512021 102507 PM 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserType](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](max) NULL,
+	[DescriptionArabic] [nvarchar](max) NULL,
+	[DescriptionEnglish] [nvarchar](max) NULL,
+	[ValidFrom] [datetime2](7) NULL,
+	[ValidTo] [datetime2](7) NULL,
+ CONSTRAINT [PK_UserType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210430220136_Init', N'5.0.4')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501020447_init', N'5.0.5')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501021144_init', N'5.0.5')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501024732_user', N'5.0.5')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501024942_user', N'5.0.5')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501113826_test', N'5.0.5')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501142847_seed', N'5.0.5')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210501144058_seed-2', N'5.0.5')
+GO
+SET IDENTITY_INSERT [dbo].[Application] ON 
+GO
+INSERT [dbo].[Application] ([Id], [Code], [NameAr], [NameEn]) VALUES (1, N'pwc', N'pwc', N'pwc')
+GO
+SET IDENTITY_INSERT [dbo].[Application] OFF
+GO
+INSERT [dbo].[AspNetRoles] ([Id], [ApplicationId], [Name], [NormalizedName], [ConcurrencyStamp]) VALUES (N'1761ad9f-36df-4a40-a1a1-514b833d4507', 1, N'User', N'USER', N'962ee5ca-3584-480a-8015-49d79782a49f')
+GO
+INSERT [dbo].[AspNetRoles] ([Id], [ApplicationId], [Name], [NormalizedName], [ConcurrencyStamp]) VALUES (N'8a77cfd4-4835-4883-87d5-d57e7f6b4d76', 1, N'Admin', N'ADMIN', N'5c4b7260-6440-4fd2-9e91-8e9bfa614e37')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'052bf716-9d16-4be0-9e28-0c5f2f4275e4', N'1761ad9f-36df-4a40-a1a1-514b833d4507')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'595f48ce-0f51-4ae4-b987-6a8680f6b59a', N'8a77cfd4-4835-4883-87d5-d57e7f6b4d76')
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [FirstNameEn], [LastNameEn], [EmailAddress], [Password], [IDN], [DateOfBirth], [Gender], [Street], [City], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount]) VALUES (N'052bf716-9d16-4be0-9e28-0c5f2f4275e4', N'Userr', N'pwc', N'User@public.com', NULL, NULL, CAST(N'0001-01-01T000000.0000000' AS DateTime2), 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, N'Userr', N'USERR', NULL, NULL, 0, N'AQAAAAEAACcQAAAAEOlo5VdJD9Wghq3LtzUOfZPM0J8vJ57OL+0qyBOKQUWXO42QJSLkjgDjHdCnK2Eltw==', N'JSNZEIFDJ4HWDB33TF3C7GFFZ3M3DMTZ', N'cb226af8-893f-4ed0-a5d8-98d1129a38e0', NULL, 0, 0, NULL, 1, 0)
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [FirstNameEn], [LastNameEn], [EmailAddress], [Password], [IDN], [DateOfBirth], [Gender], [Street], [City], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount]) VALUES (N'595f48ce-0f51-4ae4-b987-6a8680f6b59a', N'Admin', N'pwc', N'Admin@fca.com', NULL, NULL, CAST(N'0001-01-01T000000.0000000' AS DateTime2), 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, N'Admin', N'ADMIN', NULL, NULL, 0, N'AQAAAAEAACcQAAAAEPvfefHVA9KbgadvcV4tODGHtVTQ+fSXjYRe0i7Jj1v0acUgAklqNRw+tsllbuzrLQ==', N'KU43NXETNEKLZR5FAVAQ4MNRRJKO2RC3', N'5b97f14f-6fb5-4b8e-b14b-b960529613de', NULL, 0, 0, NULL, 1, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Country] ON 
+GO
+INSERT [dbo].[Country] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (1, NULL, N'Jordan', N'Jordan', NULL, NULL)
+GO
+INSERT [dbo].[Country] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (2, NULL, N'UAE', N'UAE', NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[Country] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Gender] ON 
+GO
+INSERT [dbo].[Gender] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (1, NULL, N'male', N'male', NULL, NULL)
+GO
+INSERT [dbo].[Gender] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (2, NULL, N'female', N'female', NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[Gender] OFF
+GO
+SET IDENTITY_INSERT [dbo].[NoAuthUser] ON 
+GO
+INSERT [dbo].[NoAuthUser] ([Id], [FirstNameEn], [LastNameEn], [EmailAddress], [Password], [DateOfBirth], [GenderId], [Street], [City], [CountryId], [UserTypeId], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (1, N'test', N'first', N'test@test.com', N'majd', NULL, NULL, NULL, NULL, NULL, 2, NULL, CAST(N'2021-05-01T174633.1988180' AS DateTime2), NULL, NULL, 0)
+GO
+SET IDENTITY_INSERT [dbo].[NoAuthUser] OFF
+GO
+SET IDENTITY_INSERT [dbo].[RequestStatus] ON 
+GO
+INSERT [dbo].[RequestStatus] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (1, NULL, N'Approved', N'Approved', NULL, NULL)
+GO
+INSERT [dbo].[RequestStatus] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (2, NULL, N'Submitted', N'Submitted', NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[RequestStatus] OFF
+GO
+SET IDENTITY_INSERT [dbo].[UserApplication] ON 
+GO
+INSERT [dbo].[UserApplication] ([Id], [ApplicationId], [UserId]) VALUES (5, 1, N'052bf716-9d16-4be0-9e28-0c5f2f4275e4')
+GO
+INSERT [dbo].[UserApplication] ([Id], [ApplicationId], [UserId]) VALUES (6, 1, N'595f48ce-0f51-4ae4-b987-6a8680f6b59a')
+GO
+SET IDENTITY_INSERT [dbo].[UserApplication] OFF
+GO
+SET IDENTITY_INSERT [dbo].[UserType] ON 
+GO
+INSERT [dbo].[UserType] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (1, NULL, N'Admin', N'Admin', NULL, NULL)
+GO
+INSERT [dbo].[UserType] ([Id], [Code], [DescriptionArabic], [DescriptionEnglish], [ValidFrom], [ValidTo]) VALUES (2, NULL, N'user', N'user', NULL, NULL)
+GO
+SET IDENTITY_INSERT [dbo].[UserType] OFF
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [IX_AspNetRoleClaims_RoleId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_AspNetRoleClaims_RoleId] ON [dbo].[AspNetRoleClaims]
+(
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ Object  Index [IX_AspNetRoles_ApplicationId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_AspNetRoles_ApplicationId] ON [dbo].[AspNetRoles]
+(
+	[ApplicationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [RoleNameIndex]    Script Date 512021 102507 PM 
+CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex] ON [dbo].[AspNetRoles]
+(
+	[NormalizedName] ASC
+)
+WHERE ([NormalizedName] IS NOT NULL)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [IX_AspNetUserClaims_UserId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_AspNetUserClaims_UserId] ON [dbo].[AspNetUserClaims]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [IX_AspNetUserLogins_UserId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_AspNetUserLogins_UserId] ON [dbo].[AspNetUserLogins]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [IX_AspNetUserRoles_RoleId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_AspNetUserRoles_RoleId] ON [dbo].[AspNetUserRoles]
+(
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [EmailIndex]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [EmailIndex] ON [dbo].[AspNetUsers]
+(
+	[NormalizedEmail] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [UserNameIndex]    Script Date 512021 102507 PM 
+CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex] ON [dbo].[AspNetUsers]
+(
+	[NormalizedUserName] ASC
+)
+WHERE ([NormalizedUserName] IS NOT NULL)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ Object  Index [IX_NoAuthUser_CountryId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_NoAuthUser_CountryId] ON [dbo].[NoAuthUser]
+(
+	[CountryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ Object  Index [IX_NoAuthUser_GenderId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_NoAuthUser_GenderId] ON [dbo].[NoAuthUser]
+(
+	[GenderId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ Object  Index [IX_NoAuthUser_UserTypeId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_NoAuthUser_UserTypeId] ON [dbo].[NoAuthUser]
+(
+	[UserTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ Object  Index [IX_UserApplication_ApplicationId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_UserApplication_ApplicationId] ON [dbo].[UserApplication]
+(
+	[ApplicationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ Object  Index [IX_UserApplication_UserId]    Script Date 512021 102507 PM 
+CREATE NONCLUSTERED INDEX [IX_UserApplication_UserId] ON [dbo].[UserApplication]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[AspNetRoleClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
+GO
+ALTER TABLE [dbo].[AspNetRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRoles_Application_ApplicationId] FOREIGN KEY([ApplicationId])
+REFERENCES [dbo].[Application] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRoles] CHECK CONSTRAINT [FK_AspNetRoles_Application_ApplicationId]
+GO
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[NoAuthUser]  WITH CHECK ADD  CONSTRAINT [FK_NoAuthUser_Country_CountryId] FOREIGN KEY([CountryId])
+REFERENCES [dbo].[Country] ([Id])
+GO
+ALTER TABLE [dbo].[NoAuthUser] CHECK CONSTRAINT [FK_NoAuthUser_Country_CountryId]
+GO
+ALTER TABLE [dbo].[NoAuthUser]  WITH CHECK ADD  CONSTRAINT [FK_NoAuthUser_Gender_GenderId] FOREIGN KEY([GenderId])
+REFERENCES [dbo].[Gender] ([Id])
+GO
+ALTER TABLE [dbo].[NoAuthUser] CHECK CONSTRAINT [FK_NoAuthUser_Gender_GenderId]
+GO
+ALTER TABLE [dbo].[NoAuthUser]  WITH CHECK ADD  CONSTRAINT [FK_NoAuthUser_UserType_UserTypeId] FOREIGN KEY([UserTypeId])
+REFERENCES [dbo].[UserType] ([Id])
+GO
+ALTER TABLE [dbo].[NoAuthUser] CHECK CONSTRAINT [FK_NoAuthUser_UserType_UserTypeId]
+GO
+ALTER TABLE [dbo].[UserApplication]  WITH CHECK ADD  CONSTRAINT [FK_UserApplication_Application_ApplicationId] FOREIGN KEY([ApplicationId])
+REFERENCES [dbo].[Application] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[UserApplication] CHECK CONSTRAINT [FK_UserApplication_Application_ApplicationId]
+GO
+ALTER TABLE [dbo].[UserApplication]  WITH CHECK ADD  CONSTRAINT [FK_UserApplication_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+GO
+ALTER TABLE [dbo].[UserApplication] CHECK CONSTRAINT [FK_UserApplication_AspNetUsers_UserId]
+GO
+USE [master]
+GO
+ALTER DATABASE [pwcAssignment] SET  READ_WRITE 
+GO

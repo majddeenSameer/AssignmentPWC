@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Application</name>
+    </assembly>
+    <members>
+        <member name="M:Application.Controllers.IntegrationController.AddDeclartion(DTO.IntegrationRequestDto)">
+            <summary>
+            this Api to add declaration request
+            <response code="200">declartion created</response>
+            <response code="422">Bussniss exception</response>
+            <response code="400">Bad Request</response>
+            <response code="500">Oops! Can't create your declartion right now</response>
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Controllers.IntegrationController.Get(System.Int64)">
+            <summary>
+            this api to get declartion data debend on declartion id 
+            <response code="200">declartion created</response>
+            <response code="422">Bussniss exception</response>
+            <response code="404">Not Found</response>
+            <response code="500">can not get result right now </response>    
+            /// </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Controllers.IntegrationController.Search(System.Int32)">
+            <summary>
+            this Api to get declarations requests after Index
+            <response code="200">Success</response>
+            <response code="422">Bussniss exception</response>
+            <response code="500">Oops! Can't get your declartions right now</response>
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Controllers.IntegrationController.UpdateStatus(DTO.UpdateDeclartaionStatustDto)">
+            <summary>
+             /// this Api to update declarations status 
+            <response code="200">status Updated</response>
+            <response code="422">Bussniss exception</response>
+            <response code="500">Oops! Can't update your declartion right now</response>
+            </summary>
+            <param name="updateStatustDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Controllers.UserDomainsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Application.Controllers.UserDomainsController.#ctor(Domain.Interfaces.IReadAsyncRepository{Domain.DomainModels.UserDomains},Domain.Interfaces.IUserDomainsService,Domain.Interfaces.ISpecificationFactory,Infrastructure.IReportService,Domain.Interfaces.IDomainService{Domain.DomainModels.UserDomains},Microsoft.AspNetCore.Http.IHttpContextAccessor,Domain.Interfaces.IIdentityService)">
+            <summary>
+            
+            </summary>
+            <param name="repsitory"></param>
+            <param name="UserDomainsService"></param>
+            <param name="specificationFactory"></param>
+            <param name="reportService"></param>
+            <param name="domainService"></param>
+            <param name="httpContextAccessor"></param>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Controllers.UserDomainsController.Search(DTO.SearchPageDto{DTO.UserDomainsDto})">
+            <summary>
+            
+            </summary>
+            <param name="searchPageDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Controllers.UserDomainsController.SearchSugg(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Controllers.UserDomainsController.domainExcelSheet(DTO.SearchPageDto{DTO.UserDomainsDto})">
+            <summary>
+            
+            </summary>
+            <param name="searchPageDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Controllers.UserDomainsTransactionsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Application.Controllers.UserDomainsTransactionsController.#ctor(Domain.Interfaces.IReadAsyncRepository{Domain.DomainModels.UserDomainsTransactions},Domain.Interfaces.ISpecificationFactory,Domain.Interfaces.IDomainService{Domain.DomainModels.UserDomainsTransactions},Microsoft.AspNetCore.Http.IHttpContextAccessor,Domain.Interfaces.IIdentityService)">
+            <summary>
+            
+            </summary>
+            <param name="repsitory"></param>
+            <param name="specificationFactory"></param>
+            <param name="domainService"></param>
+            <param name="httpContextAccessor"></param>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Controllers.UserDomainsTransactionsController.Search(DTO.SearchPageDto{DTO.UserDomainsTransactionsDto})">
+            <summary>
+            
+            </summary>
+            <param name="searchPageDto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

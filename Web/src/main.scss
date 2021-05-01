@@ -1,0 +1,246 @@
+/*
+ * Entry point of global application style.
+ * Component-specific style should not go here and be included directly as part of the components.
+ */
+
+// Theme variables, must be included before the libraries to allow overriding defaults
+@import "theme/theme-variables";
+
+// 3rd party libraries
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+
+@import "~ngx-toastr/toastr";
+@import "~ngx-toastr/toastr-bs4-alert";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+
+// Theme customization
+@import "theme/theme";
+
+body {
+  overflow-x: hidden;
+}
+control-validator {
+  ul {
+    display: block;
+    position: absolute;
+    background: $red;
+    border-radius: 6px;
+    right: 1rem;
+    top: -15px;
+    padding: 0.2rem 1rem !important;
+    color: $white;
+    padding-inline-start: 1.5rem !important;
+    white-space: nowrap;
+
+    &:after {
+      content: " ";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7px 7px 0 7px;
+      border-color: $red transparent transparent transparent;
+      top: 100%;
+      left: 50%;
+      margin-inline-start: -7px;
+      position: absolute;
+    }
+  }
+}
+
+.form-control:disabled,
+ng-select:disabled,
+.form-control[readonly] {
+  border: none;
+  height: 28px;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.ng-dropdown-panel {
+  font-size: 12px;
+}
+
+.form-control {
+  background-color: $light-blue;
+  border: none;
+  border-radius: 25px !important;
+  height: 28px;
+  width: 100%;
+  min-height: 28px;
+  font-size: 12px;
+}
+
+.ng-select .ng-select-container {
+  height: 28px !important;
+  min-height: 28px !important;
+}
+
+input,
+datepicker-control,
+lookup,
+app-autocomplete-control {
+  &.ng-invalid,
+  &.ng-valid {
+    background-color: $light-blue;
+    border: none;
+    border-radius: 25px;
+    height: 28px;
+    width: 100%;
+    min-height: 28px;
+    font-size: 12px;
+  }
+  &.ng-invalid,
+  &.ng-valid {
+    .ng-select .ng-select-container {
+      background-color: $light-blue;
+      border: none;
+      border-radius: 25px;
+      height: 28px;
+      width: 100%;
+      min-height: 28px;
+      font-size: 12px;
+    }
+  }
+}
+
+.internal {
+  .form-control,
+  .ng-select .ng-select-container {
+    background-color: #fff;
+    border-radius: 5px !important;
+  }
+
+  input,
+  datepicker-control,
+  lookup,
+  app-autocomplete-control {
+    &.ng-invalid,
+    &.ng-valid {
+      background-color: #fff;
+      border-radius: 5px !important;
+    }
+    &.ng-invalid,
+    &.ng-valid {
+      .ng-select .ng-select-container {
+        background-color: #fff;
+        border-radius: 5px !important;
+      }
+    }
+  }
+}
+
+lookup {
+  &.ng-invalid {
+    .ng-select .ng-select-container {
+      border-inline-start: 5px solid $red !important;
+    }
+    .ng-select.ng-select-disabled > .ng-select-container {
+      border: none !important;
+    }
+  }
+
+  &.ng-valid {
+    .ng-select .ng-select-container {
+      border-inline-start: 5px solid $green !important;
+    }
+    .ng-select.ng-select-disabled > .ng-select-container {
+      border: none !important;
+    }
+  }
+}
+
+app-autocomplete-control {
+  &.ng-invalid {
+    .ng-select .ng-select-container {
+      border-inline-start: 5px solid $red !important;
+    }
+  }
+
+  &.ng-valid {
+    .ng-select .ng-select-container {
+      border-inline-start: 5px solid $green !important;
+    }
+  }
+}
+
+datepicker-control {
+  &.ng-invalid {
+    input.form-control.ng-valid {
+      border-inline-start: 5px solid $red !important;
+    }
+  }
+
+  &.ng-valid {
+    input.form-control.ng-valid {
+      border-inline-start: 5px solid $green !important;
+    }
+  }
+}
+
+input {
+  &.form-control {
+    &.ng-invalid {
+      border-inline-start: 5px solid $red !important;
+    }
+
+    &.ng-valid {
+      border-inline-start: 5px solid $green !important;
+    }
+  }
+}
+
+.ng-select.ng-select-opened.ng-select-bottom > .ng-select-container,
+.ng-select.ng-select-opened.ng-select-top > .ng-select-container {
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.ngb-dp-header,
+.ngb-dp-weekdays,
+.theme-green .bs-datepicker-body table td span.selected,
+.theme-green .bs-datepicker-head {
+  background-color: $dark-blue !important;
+}
+
+.ngb-dp-weekday,
+.ngb-dp-navigation-chevron {
+  color: $white !important;
+}
+
+.bs-datepicker-body table td {
+  border: none !important;
+}
+
+.ng-select.ng-select-disabled > .ng-select-container {
+  background-color: #e9ecef !important;
+  opacity: 1;
+  border: none !important;
+  height: 28px;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 12px;
+  min-height: 28px;
+}
+
+ngx-intl-tel-input {
+  &.ng-invalid {
+    input.form-control.ng-valid {
+      border-inline-start: 5px solid $red !important;
+    }
+  }
+}
+
+.iti {
+  width: 100%;
+}
+
+.toast-warning {
+  background-color: #ffc107;
+}

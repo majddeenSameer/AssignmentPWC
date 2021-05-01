@@ -1,0 +1,42 @@
+<div class="login-page">
+  <div class="h-100">
+    <div class="h-60 align-items-center justify-content-center d-flex">
+      <div class="p-4 card internal-login mt-3">
+        <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+          <h5 class="text-gold f-14">Login ____</h5>
+          <h1 class="mt-3 mb-4 pb-3">PWC Assinment Login</h1>
+          <label>Username</label>
+          <div class="d-flex align-items-center input-container mb-3">
+            <i class="fas fa-user"></i>
+            <input type="text"
+                   class="form-control"
+                   formControlName="username"
+                   autocomplete="username"
+                   [placeholder]="'Username'  " />
+          </div>
+          <small [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
+                 class="text-danger">
+            Username is required
+          </small>
+          <label>Password</label>
+          <div class="d-flex align-items-center input-container mb-2">
+            <i class="fas fa-lock"></i>
+            <input type="password"
+                   class="form-control"
+                   formControlName="password"
+                   autocomplete="current-password"
+                   [placeholder]="'Password' "
+                   required />
+          </div>
+          <small [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
+                 class="text-danger mt-0">
+            Password is required
+          </small>
+          <button class="btn btn-secondary mt-3 w-100" type="submit" >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+/*
+ * Application global variables.
+ */
+
+// Set Font Awesome font path
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+
+// ---------------------------------------------------------------------------
+// Bootstrap variables
+//
+// Override Bootstrap variables here to suite your theme.
+// Copy variables you want to customize from node_modules/bootstrap/scss/_variables.scss
+
+//
+// Color system
+//
+
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #90919c;
+$gray-600: #868e96;
+$gray-700: #686868;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #646464;
+
+$blue-gradient: linear-gradient(to right, #1c3a59, #3774b2);
+
+$blue-gradient-downward: linear-gradient(#1c3a59, #3774b2);
+
+$dark-blue-internal: #16274c;
+$gold-internal: #b7b18c;
+
+$blue: #6baade;
+$alert: #d7a53b;
+$dark-blue: #3270ac;
+$blue-black: #265b94;
+$blue-black-internal: #16274c;
+$light-blue: #ebf3fa;
+$gray: #859cb8;
+$gray-internal: #e2e2e2;
+$sky-blue: #cadff2;
+$dark-gray: #99b6d0;
+$gold: #d9c06a;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #f44336;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #26b99a;
+$teal: #20c997;
+$cyan: #17a2b8;
+$border-green: #b7cace;
+
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800,
+);
+
+// Use Bootstrap defaults for other variables, imported here so we can access all app variables in one place when used
+// in components.
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
